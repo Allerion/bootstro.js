@@ -255,6 +255,19 @@ $(document).ready(function(){
                 var p = get_popup(idx);
                 var $el = get_element(idx);
                 
+                // Handle hidden content
+                if($el.is(":hidden")){
+                    switch(true){
+                        case ($el.parents(".tab-pane").length > 0):
+                            var tid = $el.closest(".tab-pane").attr('id');
+                            $('.nav-tabs > li > a[href="#'+tid+'"]').tab('show');
+                        break;
+                        default:
+                        
+                        break;
+                    }
+                }
+                
                 $el.popover(p).popover('show');
                   
                 //scroll if neccessary
